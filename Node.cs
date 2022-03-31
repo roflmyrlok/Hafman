@@ -11,7 +11,6 @@ namespace Havman
 
 		public void setNull()
 		{
-			
 			if (ParentNode.LeftNode == this)
 			{
 				ParentNode.LeftNode = null;
@@ -20,10 +19,6 @@ namespace Havman
 			{
 				ParentNode.RightNode = null;
 			}
-
-			ParentNode = null;
-			LeftNode = null;
-			RightNode = null;
 		}
 	}
 }
