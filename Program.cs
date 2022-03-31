@@ -14,6 +14,5 @@ class Program
 		var dictsFromHafmanTree = new createCodedDictsFromHafmanTree(binaryTree, lines);
 		new createNewFileWithCodes(dictsFromHafmanTree.codeDict, dictsFromHafmanTree.deCodeDict, lines);
 		new decoderOfHafmanNote().decode();
-
 	}
 }
