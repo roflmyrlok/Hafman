@@ -1,0 +1,15 @@
+/Users/atrybushnyi/Documents/GitHub/Hafman/bin/Debug/net6.0/Hafman
+/Users/atrybushnyi/Documents/GitHub/Hafman/bin/Debug/net6.0/Hafman.deps.json
+/Users/atrybushnyi/Documents/GitHub/Hafman/bin/Debug/net6.0/Hafman.runtimeconfig.json
+/Users/atrybushnyi/Documents/GitHub/Hafman/bin/Debug/net6.0/Hafman.dll
+/Users/atrybushnyi/Documents/GitHub/Hafman/bin/Debug/net6.0/Hafman.pdb
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.csproj.AssemblyReference.cache
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.GeneratedMSBuildEditorConfig.editorconfig
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.AssemblyInfoInputs.cache
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.AssemblyInfo.cs
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.csproj.CoreCompileInputs.cache
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.dll
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/refint/Hafman.dll
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.pdb
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/Hafman.genruntimeconfig.cache
+/Users/atrybushnyi/Documents/GitHub/Hafman/obj/Debug/net6.0/ref/Hafman.dll
