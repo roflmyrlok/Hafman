@@ -19,7 +19,7 @@ namespace Havman
 				var curr2 = queue.PriorityQueue.Dequeue();
 				var newNode = new Node
 				{
-					Data = "",//data1 + data2 for full tree
+					Data = "", //data1 + data2 for full tree
 					LeftNode = curr1,
 					RightNode = curr2
 				};
@@ -33,12 +33,12 @@ namespace Havman
 			root.ParentNode = new Node();
 			var codeDict = new Dictionary<string, string>();
 			var deCodeDict = new Dictionary<string, string>();
-			for (int leafs = 0; leafs <= charsDict.Charnumber.Count; leafs++ )
+			for (int leafs = 0; leafs <= charsDict.Charnumber.Count; leafs++)
 			{
 				var newLeaf = findLeaf(root);
-				if (newLeaf.Item2 == "") continue;//rem for full data
+				if (newLeaf.Item2 == "") continue; //rem for full data
 				codeDict.Add(newLeaf.Item2, newLeaf.Item1);
-				deCodeDict.Add(newLeaf.Item1,newLeaf.Item2);
+				deCodeDict.Add(newLeaf.Item1, newLeaf.Item2);
 			}
 
 			var newCrypt = "";
@@ -48,7 +48,7 @@ namespace Havman
 			{
 				newCrypt += (VARIABLE.Key + " " + VARIABLE.Value + Environment.NewLine);
 			}
-			
+
 			foreach (var word in lines)
 			{
 				var wordCrypt = "";
@@ -56,18 +56,20 @@ namespace Havman
 				{
 					wordCrypt += codeDict[leter.ToString()];
 				}
-
 				wordCrypt = Convert.ToString(Convert.ToInt32(wordCrypt, 2), 10);
 				wordCrypt += Environment.NewLine;
 				newCrypt += wordCrypt;
 			}
+
 			File.WriteAllText(pathd, newCrypt);
 			decoder();
-			Tuple<string,string> findLeaf(Node root)
+
+			Tuple<string, string> findLeaf(Node root)
 			{
 				string path = "";
 				var current = root;
-				while (true){
+				while (true)
+				{
 					if (current.LeftNode == null)
 					{
 						if (current.RightNode == null)
@@ -75,6 +77,7 @@ namespace Havman
 							break;
 						}
 					}
+
 					if (current.LeftNode != null)
 					{
 						current = current.LeftNode;
@@ -96,12 +99,12 @@ namespace Havman
 			string decoder()
 			{
 				List<string> lines2 = new FileReader().ReadLines("ans");
-				var dictDecod = new Dictionary<string,string>();
+				var dictDecod = new Dictionary<string, string>();
 				var words = new List<string>();
-				for (int i = 1; i < Convert.ToInt32(lines2[0]); i++)
+				for (int i = 1; i <= Convert.ToInt32(lines2[0]); i++)
 				{
 					var curr = lines2[i].Split();
-					dictDecod.Add(curr[0],curr[1]);
+					dictDecod.Add(curr[0], curr[1]);
 				}
 
 				for (int i = Convert.ToInt32(lines2[0]) + 1; i < lines2.Count; i++)
@@ -110,17 +113,64 @@ namespace Havman
 					words.Add(wordDeCrypt);
 				}
 
-				var status = 0;
-				while (true)
+				var ListOfTokenz = new List<string>();
+				foreach (var word in words)
 				{
-					var item = false;
-					while (item == false)
+					var currentList = Tokenized(word);
+					foreach (var token in currentList)
 					{
-						var i = 0;
-						
+						ListOfTokenz.Add(token);
 					}
 				}
-				return "Ds";
+
+				var stack = new Stack<string>();
+				for (int i = ListOfTokenz.Count - 1; i >= 0; i--)
+				{
+					stack.Push(ListOfTokenz[i]);
+				}
+				var resultStr = "";
+				foreach (var VARIABLE in stack)
+				{
+					Console.WriteLine(VARIABLE);
+				}
+				while (stack.Count > 0)
+				{
+					var newElement = stack.Pop();
+					if (dictDecod.ContainsKey(newElement))
+					{
+						resultStr += dictDecod[newElement];
+					}
+					else
+					{
+						//110000100110
+						var addIt = stack.Pop();
+						stack.Push(newElement + addIt);
+					}
+						
+				}
+				Console.WriteLine(resultStr);
+				return resultStr;
+			}
+
+			List<string> Tokenized(string expression)
+			{
+				string[] numbersList = {"1", "0"};
+
+				var answearShit = new List<string>();
+
+				for (var index = 0; index != expression.Length; index++)
+				{
+					var element = expression[index].ToString();
+
+					if (numbersList.Contains(element))
+					{
+						answearShit.Add(element);
+					}
+				}
+
+				return answearShit;
+
+
 			}
 		}
 	}
