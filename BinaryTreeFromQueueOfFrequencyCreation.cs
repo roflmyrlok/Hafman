@@ -11,7 +11,7 @@ public class BinaryTreeFromQueueOfFrequencyCreation
 			var curr2 = queue.Dequeue();
 			var newNode = new Node
 			{
-				Data = "", //data1 + data2 for full tree
+				Data = curr1.Data + curr2.Data,
 				LeftNode = curr1,
 				RightNode = curr2
 			};
@@ -22,5 +22,36 @@ public class BinaryTreeFromQueueOfFrequencyCreation
 		}
 
 		root = queue.Dequeue();
+	}
+	public Tuple<string, string> findLeaf()
+	{
+		string path = "";
+		var current = root;
+		while (true)
+		{
+			if (current.LeftNode == null)
+			{
+				if (current.RightNode == null)
+				{
+					break;
+				}
+			}
+
+			if (current.LeftNode != null)
+			{
+				current = current.LeftNode;
+				path += 0;
+			}
+			else if (current.RightNode != null)
+			{
+				current = current.RightNode;
+				path += 1;
+			}
+		}
+
+		var ans = new Tuple<string, string>(path, current.Data);
+		if (path == "") return ans;
+		current.setNull();
+		return ans;
 	}
 }
