@@ -13,8 +13,8 @@ class Program
 		var dictOfFrequency = newFrequencyAnalyzer.AnalyzeFrequency(lines);
 		var treeCreator = new BinaryTreeCreator();
 		var binaryTree = treeCreator.CreateTree(dictOfFrequency);
-		var dictsFromHafmanTree = new createCodedDictsFromHafmanTree(binaryTree, lines);
-		new createNewFileWithCodes(dictsFromHafmanTree.codeDict, dictsFromHafmanTree.deCodeDict, lines);
-		new decoderOfHafmanNote().decode();
+		var HafmanCoder = new HafmanWorker(binaryTree, lines);
+		HafmanCoder.WorkerIncode();
+		HafmanCoder.WorkerDecode();
 	}
 }
