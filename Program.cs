@@ -129,10 +129,6 @@ namespace Havman
 					stack.Push(ListOfTokenz[i]);
 				}
 				var resultStr = "";
-				foreach (var VARIABLE in stack)
-				{
-					Console.WriteLine(VARIABLE);
-				}
 				while (stack.Count > 0)
 				{
 					var newElement = stack.Pop();
