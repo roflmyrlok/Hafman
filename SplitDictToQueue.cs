@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace Havman
 {
-	public class SplitCharsToQueue
+	public class SplitDictToQueue
 	{
 		public PriorityQueue<Node, int> PriorityQueue;
 
-		public SplitCharsToQueue(Dictionary<char, int> dictOfFrequency)
+		public SplitDictToQueue(Dictionary<char, int> dictOfFrequency)
 		{
 			PriorityQueue = new PriorityQueue<Node, int>();
 			foreach (var keyValue in dictOfFrequency)

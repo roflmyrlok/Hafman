@@ -9,31 +9,14 @@ namespace Havman
 	{
 		static void Main(string[] args)
 		{
-			List<string> lines = new FileReader().ReadLines("lines.txt");
-			SplitLines charsDict = new SplitLines();
-			charsDict.splitNFill(lines);
-			var queue = new SplitCharsToQueue(charsDict.Charnumber);
-			while (!queue.PriorityQueue.Count.Equals(1))
-			{
-				var curr1 = queue.PriorityQueue.Dequeue();
-				var curr2 = queue.PriorityQueue.Dequeue();
-				var newNode = new Node
-				{
-					Data = "", //data1 + data2 for full tree
-					LeftNode = curr1,
-					RightNode = curr2
-				};
-				curr1.ParentNode = newNode;
-				curr2.ParentNode = newNode;
-				newNode.frequency = curr1.frequency + curr2.frequency;
-				queue.PriorityQueue.Enqueue(newNode, newNode.frequency);
-			}
-
-			var root = queue.PriorityQueue.Dequeue();
-			root.ParentNode = new Node();
+			var pathToNonCodedTxt = "lines.txt";
+			List<string> lines = new FileReader().ReadLines(pathToNonCodedTxt);
+			var DictOfFrequency = new TxtLinesToFrequencyDict(lines);
+			var queue = new SplitDictToQueue(DictOfFrequency.CharFrequencyDictionary).PriorityQueue;
+			var root = new BinaryTreeFromQueueOfFrequencyCreation(queue).root;
 			var codeDict = new Dictionary<string, string>();
 			var deCodeDict = new Dictionary<string, string>();
-			for (int leafs = 0; leafs <= charsDict.Charnumber.Count; leafs++)
+			for (int leafs = 0; leafs <= DictOfFrequency.CharFrequencyDictionary.Count; leafs++)
 			{
 				var newLeaf = findLeaf(root);
 				if (newLeaf.Item2 == "") continue; //rem for full data
